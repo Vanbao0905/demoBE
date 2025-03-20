@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <!-- Navigation -->
+    <div class="w-full bg-white border-b border-gray-300 py-2">
+        <div class="container mx-auto text-center">
+            <a href="#" class="mx-2 text-gray-600">Home</a>
+            <span class="mx-2 text-black">|</span>
+            <a href="login.html" class="mx-2 text-black font-bold">Đăng nhập</a>
+            <span class="mx-2 text-black">|</span>
+            <a href="register.html" class="mx-2 text-gray-600">Đăng ký</a>
+        </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="bg-white p-8 border border-gray-300 rounded shadow-md mt-8">
+        <h2 class="text-center text-xl font-semibold mb-6">Màn hình đăng nhập</h2>
+        <form>
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700">Username</label>
+                <input type="text" id="username" class="w-full px-3 py-2 border border-gray-300 rounded" />
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700">Mật khẩu</label>
+                <input type="password" id="password" class="w-full px-3 py-2 border border-gray-300 rounded" />
+            </div>
+            <div class="mb-4 flex items-center">
+                <input type="checkbox" id="remember" class="mr-2" />
+                <label for="remember" class="text-gray-700">Ghi nhớ đăng nhập</label>
+            </div>
+            <div class="mb-4 text-center">
+                <a href="#" class="text-blue-500">Quên mật khẩu</a>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Đăng nhập</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="w-full bg-white border-t border-gray-300 py-2 mt-8">
+        <div class="container mx-auto text-center">
+            <p class="text-gray-600">Lập trình web @01/2025</p>
+        </div>
+    </div>
+</body>
+</html>

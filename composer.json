@@ -1,0 +1,6 @@
+{
+    "name": "myvendor/myproject",
+    "require": {
+        "monolog/monolog": "^3.8"
+    }
+}
