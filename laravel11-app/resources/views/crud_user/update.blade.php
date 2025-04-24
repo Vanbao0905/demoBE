@@ -1,65 +1,44 @@
 @extends('dashboard')
-
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<script src="https://cdn.tailwindcss.com"></script>
 @section('content')
-    <main class="signup-form">
-        <div class="cotainer">
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <div class="card">
-                        <h3 class="card-header text-center">Update User</h3>
-                        <div class="card-body">
-                            <form action="{{ route('user.postUpdateUser') }}" method="POST">
-                                @csrf
-                                <input name="id" type="hidden" value="{{ $user->id }}">
-                                <div class="form-group mb-3">
-                                    <input type="text" placeholder="Name" id="name" class="form-control"
-                                        name="name" value="{{ $user->name }}" required autofocus>
-                                    @if ($errors->has('name'))
-                                        <span class="text-danger">{{ $errors->first('name') }}</span>
-                                    @endif
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <input type="text" placeholder="Phone" id="Phone" class="form-control"
-                                        name="Phone" value="{{ $user->Phone }}" required autofocus>
-                                    @if ($errors->has('Phone'))
-                                        <span class="text-danger">{{ $errors->first('Phone') }}</span>
-                                    @endif
-                                </div>
-
-
-                                <div class="form-group mb-3">
-                                    <input type="text" placeholder="adress" id="adress" class="form-control"
-                                        name="adress" value="{{ $user->name }}" required autofocus>
-                                    @if ($errors->has('adress'))
-                                        <span class="text-danger">{{ $errors->first('adress') }}</span>
-                                    @endif
-                                </div>
-
-
-                                <div class="form-group mb-3">
-                                    <input type="text" placeholder="Email" id="email_address" class="form-control"
-                                        value="{{ $user->email }}" name="email" required autofocus>
-                                    @if ($errors->has('email'))
-                                        <span class="text-danger">{{ $errors->first('email') }}</span>
-                                    @endif
-                                </div>
-                                <div class="form-group mb-3">
-                                    <input type="password" placeholder="Password" id="password" class="form-control"
-                                        name="password" required>
-                                    @if ($errors->has('password'))
-                                        <span class="text-danger">{{ $errors->first('password') }}</span>
-                                    @endif
-                                </div>
-
-                                <div class="d-grid mx-auto">
-                                    <button type="submit" class="btn btn-dark btn-block">Update</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="Form-login">
+    <h2>Màn Hình Thay Đổi Thông Tin</h2>
+    <form action="{{ route('user.postUpdateUser') }}" method="post" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" name="id" value="{{ $user ->id}}">
+        <div class="text-box">
+            <label for="username">Username</label>
+            <input type="text" name="name" id="name" value="{{ $user ->name}}" require autofocus>
+            @if ($errors->has('name'))
+            <span class="text-danger">{{ $errors->first('name') }}</span>
+            @endif
         </div>
-    </main>
+        <div class="text-box">
+            <label for="password">Mật Khẩu</label>
+            <input type="password" placeholder="Password" id="password" name="password" required>
+            @if ($errors->has('password'))
+            <span class="text-danger">{{ $errors->first('password') }}</span>
+            @endif
+        </div>
+
+        <div class="text-box">
+            <label for="password_confirmation">Nhập Lại Mật Khẩu</label>
+            <input type="password" id="password_confirmation" name="password_confirmation" placeholder="nhập lại mật khẩu" required
+                oninput="this.setCustomValidity(this.value !== document.getElementById('password').value ? 'Mật khẩu nhập lại không khớp!' : '')">
+        </div>
+        <div class="text-box">
+            <label for="email">Email</label>
+            <input type="text" value="{{ $user ->email}}" id="email_address" name="email" required autofocus>
+            @if ($errors->has('email'))
+            <span class="text-danger">{{ $errors->first('email') }}</span>
+            @endif
+        </div>
+        <div class="button-box">
+            <input class="submit" type="submit" value="Sửa Thông Tín">
+        </div>
+    </form>
+</div>
 @endsection
+
+@extends('footer')

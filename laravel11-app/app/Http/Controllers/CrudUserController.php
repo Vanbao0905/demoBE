@@ -7,14 +7,13 @@ use Session;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash as FacadesHash;
 
 /**
  * CRUD User controller
  */
 class CrudUserController extends Controller
 {
-
+    const MAX_RECORDS = 10;
     /**
      * Login page
      */
@@ -65,8 +64,10 @@ class CrudUserController extends Controller
         $data = $request->all();
         $check = User::create([
             'name' => $data['name'],
+            //'phone' => $data['phone'],
+            //'address' => $data['address'],
             'email' => $data['email'],
-            'password' => FacadesHash::make($data['password'])
+            'password' => Hash::make($data['password'])
         ]);
 
         return redirect("login");
@@ -112,8 +113,6 @@ class CrudUserController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'Phone' => 'required',
-            'adress' => 'required',
             'email' => 'required|email|unique:users,id,'.$input['id'],
             'password' => 'required|min:6',
         ]);
@@ -132,8 +131,10 @@ class CrudUserController extends Controller
      */
     public function listUser()
     {
+
         if(Auth::check()){
-            $users = User::all();
+            $users = User::paginate(self::MAX_RECORDS);
+
             return view('crud_user.list', ['users' => $users]);
         }
 

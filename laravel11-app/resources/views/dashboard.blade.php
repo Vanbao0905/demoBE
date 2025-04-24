@@ -16,7 +16,6 @@
                 <span class="mx-2 text-black">|</span>
             <a href="{{ route('user.createUser') }}" class="mx-2 text-gray-600">Đăng ký</a>
         @else
-                <span class="mx-2 text-black">|</span>
             <a href="{{ route('signout') }}" class="mx-2 text-gray-600">Thoát</a>
         @endguest
     </div>
